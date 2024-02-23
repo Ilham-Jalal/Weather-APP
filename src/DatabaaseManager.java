@@ -130,11 +130,24 @@ public class DatabaaseManager {
         ps.close();
         System.out.println(" Histoire de la ville mise à jour avec succès");
     }
-
-
-
-
-
+    public static void searchCityHistory(Integer cityId)throws SQLException {
+            String sql = "SELECT cityhistory.historicalDataId, cityhistory.cityId, cityhistory.eventDate, cityhistory.temperature, city.cityName " +
+                    "FROM CityHistory cityhistory " +
+                    "JOIN City city ON cityhistory.cityId = city.cityId " +
+                    "WHERE cityhistory.cityId = ?";
+            PreparedStatement ps = DatabaaseManager.tCon().prepareStatement(sql);
+                ps.setInt(1, cityId);
+                ResultSet resultSet = ps.executeQuery();
+                    while (resultSet.next()) {
+                        Integer HistoricaldataID = resultSet.getInt("historicalDataId");
+                        cityId = resultSet.getInt("cityId");
+                        String cityName = resultSet.getString("cityName");
+                        Date eventDate = resultSet.getDate("eventDate");
+                        String temperature = resultSet.getString("temperature");
+                        System.out.println("Historical Data ID: " + HistoricaldataID + ", City ID: " + cityId +
+                                ", City Name: " + cityName + ", Event Date: " + eventDate + ", Temperature: " + temperature);
+                    }
     }
+}
 
 

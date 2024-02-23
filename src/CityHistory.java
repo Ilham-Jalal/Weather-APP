@@ -7,10 +7,10 @@ class CityHistory {
     private LocalDate eventDate;
     private Integer temperature;
     public CityHistory(String HistoricaldataID , Integer cityId , LocalDate eventDate , Integer temperature){
-        this.HistoricaldataID= HistoricaldataID;
-        this.cityId= cityId;
-        this.eventDate= eventDate;
-        this.temperature= temperature;
+        this.HistoricaldataID = HistoricaldataID;
+        this.cityId = cityId;
+        this.eventDate = eventDate;
+        this.temperature = temperature;
     }
 
 
